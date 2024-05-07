@@ -26,12 +26,16 @@ const PurchaseOrder = new mongoose.Schema({
   },
   purchaseOrderId: { 
      type: String,  
-     unique: true 
+    //  unique: true /
   },
   customerId: { 
     type: mongoose.Schema.Types.ObjectId,
      ref: 'Customer', 
-   }
+   },
+   User:{
+    type:mongoose.Schema.ObjectId,
+    ref:'User'
+  } 
 });
 
 const PurchaseOrderModel = mongoose.model('PurchaseOrder',PurchaseOrder);

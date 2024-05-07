@@ -4,7 +4,7 @@ const Shipping = require("../models/Shipping");
 
 
 router.post("/add" , async (req,res)=>{
-    const { address, city, pincode  } = req.body;
+    const { address, city, pincode,User,purchaseOrderId,customerId  } = req.body;
     const Shippingr = await Shipping.findOne({ address: address });
     if (Shippingr) {
       // status code by default is 200
@@ -13,8 +13,7 @@ router.post("/add" , async (req,res)=>{
         .json({ error: "A Shipping  with this address already exists"});
     }
     const newShippingrData = {
-        address, city, pincode
-      
+        address, city, pincode, User,customerId,purchaseOrderId
       };
 
       const newShipping = await Shipping.create(newShippingrData);

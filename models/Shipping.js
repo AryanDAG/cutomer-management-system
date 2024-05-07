@@ -24,9 +24,11 @@ const Shipping = new mongoose.Schema({
   customerId: {
      type: mongoose.Schema.Types.ObjectId,
      ref: 'Customer',
-    
-    
-  }
+  },
+  User:{
+   type:mongoose.Schema.ObjectId,
+   ref:'User'
+ } 
 });
 
 const ShippingModel =mongoose.model('Shipping', Shipping);

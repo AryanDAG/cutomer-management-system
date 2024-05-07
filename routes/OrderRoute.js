@@ -4,7 +4,7 @@ const Order = require("../models/Order");
 
 
 router.post("/add" , async (req,res)=>{
-    const { productName, quantity, pricing , mrp } = req.body;
+    const { productName, quantity, pricing , mrp,User,customerId } = req.body;
     const Orderr = await Order.findOne({ productName: productName });
     if (Orderr) {
       // status code by default is 200
@@ -13,7 +13,7 @@ router.post("/add" , async (req,res)=>{
         .json({ error: "A Order with this name already exists"});
     }
     const newOrderrData = {
-        productName, quantity, pricing , mrp
+        productName, quantity, pricing , mrp,User,customerId
       };
 
       const newOrder = await Order.create(newOrderrData);

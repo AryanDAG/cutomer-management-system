@@ -4,7 +4,7 @@ const Customer = require("../models/Customer");
 
 
 router.post("/add" , async (req,res)=>{
-    const { name, email, mobile , city } = req.body;
+    const { name, email, mobile , city,User } = req.body;
     const customerResult = await Customer.findOne({ email: email });
     if (customerResult) {
       // status code by default is 200
@@ -13,8 +13,7 @@ router.post("/add" , async (req,res)=>{
         .json({ error: "A customer with this email already exists"});
     }
     const newCustomerrData = {
-        name, email, mobile , city
-      
+        name, email, mobile , city,User,
       };
 
       const newCustomer = await Customer.create(newCustomerrData);

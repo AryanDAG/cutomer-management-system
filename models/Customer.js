@@ -22,9 +22,12 @@ const Customer= new mongoose.Schema({
   },
   customerId: {
      type: String,
-     unique: true
-    
-   }
+    //  unique: true
+   },
+   User:{
+      type:mongoose.Schema.ObjectId,
+      ref:'User'
+    } 
 });
 
 const CustomerModel = mongoose.model("Customer", Customer);

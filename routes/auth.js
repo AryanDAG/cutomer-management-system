@@ -11,13 +11,13 @@ router.post("/register", async (req, res) => {//
   const { firstName, lastName, email , password } = req.body;
 
   // Step 2 : Does a user with this email already exist? If yes, we throw an error.
-  const user = await User.findOne({ email: email });
-  if (user) {
-    // status code by default is 200
-    return res
-      .status(403)
-      .json({ error: "A user with this email already exists"});
-  }
+  // const user = await User.findOne({ email: email });
+  // if (user) {
+  //   // status code by default is 200
+  //   return res
+  //     .status(403)
+  //     .json({ error: "A user with this email already exists"});
+  // }
   // This is a valid request
 
   // Step 3: Create a new user in the DB
@@ -33,8 +33,8 @@ router.post("/register", async (req, res) => {//
     lastName,
     email,
     password: hashedPassword,
-  
   };
+  console.log(newUserData)
   const newUser = await User.create(newUserData);
 
   // Step 4: We want to create the token to return to the user
